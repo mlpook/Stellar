@@ -215,20 +215,16 @@ object UserServiceStarter {
                 if (container?.binder != null && container.binder!!.pingBinder()) {
                     stellarBinder = container.binder
                     stellarBinder!!.linkToDeath({
-                        Log.i(TAG, "Stellar 服务器已死亡，用户服务退出...")
-                        exitProcess(0)
+                        Log.i(TAG, "Stellar 服务器已死亡，等待重连...")
                     }, 0)
 
                     val clientContainer = reply.getParcelable<BinderContainer>(EXTRA_CLIENT_BINDER)
                     if (clientContainer?.binder != null && clientContainer.binder!!.pingBinder()) {
                         clientBinder = clientContainer.binder
-                        if (serviceMode == UserServiceConstants.MODE_ONE_TIME) {
-                            clientBinder!!.linkToDeath({
-                                Log.i(TAG, "客户端 App 已退出，一次性模式，服务退出...")
-                                exitProcess(0)
-                            }, 0)
-                            Log.i(TAG, "已设置客户端死亡监听（一次性模式）")
-                        }
+                        clientBinder!!.linkToDeath({
+                            Log.i(TAG, "客户端 App 已退出，用户服务保持运行")
+                        }, 0)
+                        Log.i(TAG, "已设置客户端死亡监听")
                     }
 
                     return true

@@ -15,7 +15,7 @@ object DaemonManager {
                 return -1
             }
 
-            val cmd = "CLASSPATH=$classpath app_process /system/bin --nice-name=stellar_daemon roro.stellar.server.daemon.StellarDaemon $serverPid '$startCommand' >/dev/null 2>&1 & echo \$!"
+            val cmd = "CLASSPATH=$classpath setsid app_process /system/bin --nice-name=stellar_daemon roro.stellar.server.daemon.StellarDaemon $serverPid '$startCommand' >/dev/null 2>&1 & echo \$!"
             val process = Runtime.getRuntime().exec(arrayOf("sh", "-c", cmd))
             val pid = process.inputStream.bufferedReader().readLine()?.toIntOrNull() ?: -1
             LOGGER.i("守护进程已启动，服务 PID=$serverPid, daemon PID=$pid")

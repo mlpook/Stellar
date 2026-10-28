@@ -344,6 +344,10 @@
     <!-- Boot ADB Start Worker -->
     <string name="boot_start_channel_name">开机启动</string>
     <string name="boot_start_channel_description">开机时服务启动的通知</string>
+    <string name="keepalive_channel_name">管理器服务</string>
+    <string name="keepalive_channel_description">保持管理器进程存活，让已授权应用持续连接</string>
+    <string name="keepalive_notification_title">Stellar 管理器运行中</string>
+    <string name="keepalive_notification_description">为已授权应用保持 Stellar Binder 可用</string>
     <string name="boot_start_notification_title">Stellar 开机启动</string>
     <string name="boot_start_waiting_wifi">等待 WiFi 连接…</string>
     <string name="boot_start_enabling_wireless_adb">启用无线调试…</string>

@@ -345,6 +345,10 @@
     <!-- Boot ADB Start Worker -->
     <string name="boot_start_channel_name">Boot Start</string>
     <string name="boot_start_channel_description">Notifications for boot-time service start</string>
+    <string name="keepalive_channel_name">Manager Service</string>
+    <string name="keepalive_channel_description">Keeps the manager process resident so authorized apps stay connected</string>
+    <string name="keepalive_notification_title">Stellar manager running</string>
+    <string name="keepalive_notification_description">Keeps the Stellar binder available to authorized apps</string>
     <string name="boot_start_notification_title">Stellar Boot Start</string>
     <string name="boot_start_waiting_wifi">Waiting for WiFi connection…</string>
     <string name="boot_start_enabling_wireless_adb">Enabling wireless debugging…</string>

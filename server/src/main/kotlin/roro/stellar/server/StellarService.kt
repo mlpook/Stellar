@@ -551,7 +551,7 @@ class StellarService : IStellarService.Stub() {
         try {
             val myPid = android.os.Process.myPid()
             val classpath = System.getProperty("java.class.path") ?: return
-            val startCmd = "CLASSPATH=$classpath app_process /system/bin --nice-name=stellar_server roro.stellar.server.StellarService &"
+            val startCmd = "CLASSPATH=$classpath setsid app_process /system/bin --nice-name=stellar_server roro.stellar.server.StellarService &"
             daemonPid = DaemonManager.startDaemon(myPid, startCmd)
             if (daemonPid > 0) {
                 startDaemonMonitor()

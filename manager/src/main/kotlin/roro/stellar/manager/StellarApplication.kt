@@ -15,6 +15,7 @@ import roro.stellar.Stellar
 import roro.stellar.manager.compat.BuildUtils.atLeast30
 import roro.stellar.manager.db.AppDatabase
 import roro.stellar.manager.startup.notification.BootStartNotifications
+import roro.stellar.manager.service.StellarKeepaliveService
 import roro.stellar.manager.util.Logger.Companion.LOGGER
 
 lateinit var application: StellarApplication
@@ -48,6 +49,7 @@ class StellarApplication : Application() {
         application = this
         init(this)
         BootStartNotifications.createChannel(this)
+        StellarKeepaliveService.ensureRunning(this)
         Stellar.addServiceStartedListener(
             { executeFollowCommands() }
         )
